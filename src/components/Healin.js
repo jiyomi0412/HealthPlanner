@@ -1,16 +1,22 @@
+import Table from '@material-ui/core/Table';
+import TableHead from '@material-ui/core/TableHead';
+import TableBody from '@material-ui/core/TableBody';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+import { withStyles } from '@material-ui/core/styles';
 import React from 'react';
 
 class Healin extends React.Component{
     render(){
         return(
-            <div>
-                <HealinInfo id = {this.props.id} 
-                            name = {this.props.name}/>
-                <HealinProf birth = {this.props.birth} 
-                            gender = {this.props.gender} 
-                            height = {this.props.height}
-                            weight = {this.props.weight} />
-            </div>
+            <TableRow>
+                <TableCell>{this.props.id}</TableCell>
+                <TableCell>{this.props.name}</TableCell>
+                <TableCell>{this.props.birth}</TableCell>
+                <TableCell>{this.props.gender}</TableCell>
+                <TableCell>{this.props.height}</TableCell>
+                <TableCell>{this.props.weight}</TableCell>
+            </TableRow>
         )
     }
 }

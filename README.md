@@ -1,3 +1,7 @@
+# Health Planner with agentJS
+
+이 프로젝트는 수행 운동을 관리하고, 운동 일정을 달력에서 관리할 수 있도록 하는 Health Planner 프로젝트입니다.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

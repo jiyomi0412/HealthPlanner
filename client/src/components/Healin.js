@@ -10,12 +10,12 @@ class Healin extends React.Component{
     render(){
         return(
             <TableRow>
-                <TableCell>{this.props.id}</TableCell>
-                <TableCell>{this.props.name}</TableCell>
-                <TableCell>{this.props.birth}</TableCell>
-                <TableCell>{this.props.gender}</TableCell>
-                <TableCell>{this.props.height}</TableCell>
-                <TableCell>{this.props.weight}</TableCell>
+                <TableCell>{this.props.ID}</TableCell>
+                <TableCell>{this.props.HNAME}</TableCell>
+                <TableCell>{this.props.BIRTH}</TableCell>
+                <TableCell>{this.props.GENDER}</TableCell>
+                <TableCell>{this.props.HEIGHT}</TableCell>
+                <TableCell>{this.props.WEIGHT}</TableCell>
             </TableRow>
         )
     }
@@ -24,7 +24,7 @@ class HealinInfo extends React.Component{
     render(){
         return(
             <div>
-                <h2>{this.props.id}. {this.props.name}</h2>
+                <h2>{this.props.ID}. {this.props.HNAME}</h2>
             </div>
         )
     }
@@ -33,10 +33,10 @@ class HealinProf extends React.Component{
     render(){
         return(
             <div>
-                <p>생년월일 : {this.props.birth} </p>
-                <p>성별 :    {this.props.gender}</p> 
-                <p>신장 : {this.props.height}</p>                
-                <p>몸무게 : {this.props.weight}</p>                
+                <p>생년월일 : {this.props.BIRTH} </p>
+                <p>성별 :    {this.props.GENDER}</p> 
+                <p>신장 : {this.props.HEIGHT}</p>                
+                <p>몸무게 : {this.props.WEIGHT}</p>                
             </div>
         )
     }

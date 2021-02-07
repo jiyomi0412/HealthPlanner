@@ -6,26 +6,50 @@ import TableHead from '@material-ui/core/TableHead';
 import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { withStyles } from '@material-ui/core/styles';
 import './App.css';
 
-
+const styles = theme => ({
+  root: { 
+    width: "100%",
+    marginTop: theme.spacing.unit * 3,
+    overflowX: "auto"
+  },
+  table: {
+    minWidth: 1080
+  },
+  progress: {
+    margin: theme.spacing.unit * 2
+  }
+});
+  
 class App extends Component {
   state = {
-    healins: ''
+    healins: '',
+    completed : 0
   } 
   componentDidMount() {
+    this.timer = setInterval(this.progress, 20);
     this.callApi()
     .then(res => this.setState({healins: res}))
     .catch(err => console.log(err));
   }
-  
+  componentWillUnmount() {
+    clearInterval(this.timer);  
+  }
+ 
   callApi = async () => {
     const response = await fetch('/api/healins');
     const body = await response.json();
     return body;
   }
+  progress = () => {
+    const { completed } = this.state;  
+    this.setState({ completed: completed >= 100 ? 0 : completed + 1 });
+  };
   render(){ 
+    const { classes } = this.props;
     return (
       <div>
       <Paper>
@@ -41,11 +65,17 @@ class App extends Component {
             </TableRow>
           </TableHead>
           <TableBody>
-          {this.state.healins ? this.state.healins.map(c=>{
-            return <Healin key = {c.id} id = {c.id} name = {c.name} 
-                          birth = {c.birth} gender = {c.gender}
-                          height = {c.height} weight = {c.weight}/>
-          }):''}        
+            {this.state.healins ? this.state.healins.map(c=>{
+              return <Healin key = {c.ID} ID = {c.ID} HNAME = {c.HNAME} 
+                            BIRTH = {c.BIRTH} GENDER = {c.GENDER}
+                            HEIGHT = {c.HEIGHT} WEIGHT = {c.WEIGHT}/>
+            }):
+            <TableRow>
+              <TableCell colSpan="6" align="center">
+              <CircularProgress className={classes.progress} variant="determinate" value={this.state.completed} />
+              </TableCell>
+              </TableRow>
+            }        
           </TableBody> 
         </Table>
       </Paper>
@@ -54,4 +84,6 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withStyles(styles)(App);
+
+
